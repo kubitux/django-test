@@ -1,1 +1,13 @@
-{{ poll }}
+
+<center>
+<h3>Details of poll number : {{ poll.id }}</h3>
+</center>
+<br><b>Question :</b> {{ poll }}
+<br><b>Published the :</b> {{ poll.pub_date }}
+
+<h1>Choices :</h1>
+<ul>
+{% for choice in poll.choice_set.all %}
+	<li>{{ choice.choice }}</li>
+{% endfor %}
+</ul>
