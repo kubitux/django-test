@@ -20,7 +20,7 @@ def detail(request, poll_id):
 
 def results(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
-	return render_to_response('polls/results.html',{'poll':p}}
+	return render_to_response('polls/results.html',{'poll':p})
 
 
 
