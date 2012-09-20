@@ -24,6 +24,5 @@ def vote(request, poll_id):
 		#the Back button
 	
 
-	return HttpResponseRedirect(reverse('polls.views.results',args=(p.id,)))
-
+	return HttpResponseRedirect(reverse('poll_results', args=(p.id,)))
 
