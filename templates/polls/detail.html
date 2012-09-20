@@ -1,5 +1,7 @@
 
 <center>
+<h4>templates/polls/detail.html</h4>
+<br>
 <h3>Details of poll number : {{ poll.id }}</h3>
 </center>
 <br><b>Question :</b> {{ poll }}
@@ -11,3 +13,18 @@
 	<li>{{ choice.choice }}</li>
 {% endfor %}
 </ul>
+
+<h1>{{ poll.question }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/polls/{{ poll.id }}/vote/" method="post">
+{% csrf_token %}
+{% for choice in poll.choice_set.all %}
+forloop.counter = {{ forloop.counter }}
+choice.id = {{ choice.id }}
+	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+	<label for="choice{{ forloop.counter }}">{{ choice.choice }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
